@@ -89,14 +89,6 @@ view: users {
     drill_fields: [id, last_name, first_name, events.count, order_items.count]
   }
 
-  # dimension: lifetime_order {
-  #   label: "Customer Lifetime Orders"
-  #   type: tier
-  #   tiers: [1, 2, 5, 9, 10]
-  #   style:interval
-  #   sql: sum(${lifetime_order};;
-  # }
-
 
 
 }

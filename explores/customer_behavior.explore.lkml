@@ -6,6 +6,7 @@
 #   view_name: users
 
 #   join: order_items {
-#     sql_on: ${account.pk_id} = ${sf_opportunity_facts.account_id}  ;;
+#     sql_on: ${users.id} = ${order_items.user_id}  ;;
 #     relationship: one_to_one
 #   }
+# }
