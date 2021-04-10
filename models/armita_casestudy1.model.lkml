@@ -70,4 +70,11 @@ explore: products {
   }
 }
 
-explore: users {}
+explore: users {
+  label: "Customers"
+  join: dt_order_items {
+    type: left_outer
+    sql_on: ${users.id} = ${dt_order_items.user_id} ;;
+    relationship: one_to_many
+  }
+}

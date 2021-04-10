@@ -92,6 +92,13 @@ view: order_items {
     sql: ${TABLE}."USER_ID" ;;
   }
 
+# dimension: total_revenue {
+#   type: number
+#   sql: sum(${sale_price} ;;
+#   value_format_name: usd
+# }
+
+
   measure: count {
     type: count
     drill_fields: [detail*]

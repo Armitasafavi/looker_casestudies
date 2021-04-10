@@ -27,22 +27,36 @@ view: dt_order_items {
     sql: COALESCE(${TABLE}.total_lifetime_orders,0) ;;
   }
 
+  dimension: lifetime_revenue {
+    type: number
+    sql: COALESCE(${TABLE}.total_lifetime_revenue,0) ;;
+  }
+
 
   dimension: customer_lifetime_orders {
     type: tier
-    tiers: [0,1,2,5,10]
-    style: integer
-    sql: ${total_lifetime_orders] ;;
+    tiers: [0,1,2,3,6,10]
+    style:integer
+    sql: ${lifetime_orders} ;;
   }
 
   dimension: customer_lifetime_revenue {
     type: tier
-    style: integer
-    tiers: [0,4.99,19.99, 49.99, 99.99, 499.99, 999.00]
-    value_format: "$#,##0"
+    style: relational
+    tiers: [0.00,4.99,19.99, 49.99, 99.99, 499.99, 999.00]
+    value_format: "$0.00"
+    sql: ${lifetime_revenue} ;;
   }
 
+  measure: avg_lifetime_orders {
+  type: average
+  sql: ${lifetime_orders} ;;
+  }
 
+  measure: avg_lifetime_revenue {
+  type: average
+  sql: ${lifetime_revenue} ;;
+  }
 
 
 
